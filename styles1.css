@@ -5,7 +5,9 @@ body {
     padding: 0;
     background-color: #f0f4f8;
     color: #333;
-}
+    
+
+   }
 
 body,
 html {
@@ -14,11 +16,13 @@ html {
     padding: 0;
     display: flex;
     flex-direction: column;
+
+   
 }
 
 h1,
 h2 {
-    color: #4a4a4a;
+    color:white;
 }
 
 /* Navigation Bar */
@@ -112,6 +116,15 @@ h2 {
     padding: 50px 20px;
     background-color: #ffffff;
     text-align: center;
+    background-image: url('icons/src.jpg'); /* Replace with the path to your background image */
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-position: center; /* Center the image */
+    background-attachment: fixed; /* Make the background image fixed when scrolling */
+    font-family: Arial, sans-serif; /* Optional: Set the font family */
+    background-color: rgba(255, 255, 255, 0.983); /* Adds a translucent background */
+    opacity: 0.8; /* 0 is fully transparent, 1 is fully opaque */
+
 }
 
 .features-grid {
@@ -132,6 +145,9 @@ h2 {
     /* Allows the feature items to be flexible in size */
     max-width: 200px;
     /* Ensures the boxes don't get too wide */
+    
+
+
 }
 
 .feature-item a {
@@ -178,9 +194,19 @@ h2 {
 
 /* Community Section */
 .community {
+    
     padding: 50px 20px;
     background-color: #d6d1c4;
     text-align: center;
+    background-image: url('icons/src.jpg'); /* Replace with the path to your background image */
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-position: center; /* Center the image */
+    background-attachment: fixed; /* Make the background image fixed when scrolling */
+    font-family: Arial, sans-serif; /* Optional: Set the font family */
+    background-color: rgba(255, 255, 255, 0.945); /* Adds a translucent background */
+    opacity:0.8;
+
 }
 
 .community-features {
@@ -234,6 +260,15 @@ h2 {
     padding: 50px 20px;
     background-color: #ffffff;
     text-align: center;
+    background-image: url('icons/src.jpg'); /* Replace with the path to your background image */
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-position: center; /* Center the image */
+    background-attachment: fixed; /* Make the background image fixed when scrolling */
+    font-family: Arial, sans-serif; /* Optional: Set the font family */
+    background-color: rgba(255, 255, 255, 0.8); /* Adds a translucent background */
+    opacity:0.8;
+
 }
 
 .resource-categories {
@@ -278,6 +313,15 @@ h2 {
     padding: 50px 20px;
     background-color: #e6e2d3;
     text-align: center;
+    background-image: url('icons/src.jpg'); /* Replace with the path to your background image */
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-position: center; /* Center the image */
+    background-attachment: fixed; /* Make the background image fixed when scrolling */
+    font-family: Arial, sans-serif; /* Optional: Set the font family */
+    background-color: rgba(255, 255, 255, 0.8); /* Adds a translucent background */
+    opacity:0.8;
+
 }
 
 .testimonial-card {
@@ -327,7 +371,12 @@ h2 {
 .main-content {
     flex: 1;
     /* Allows the main content to take up space, pushing the footer down */
-}
+        background-color: rgba(255, 255, 255, 0.8); /* Adds a translucent background */
+        padding: 20px;
+        border-radius: 10px;
+    }
+    
+
 
 footer {
     background-color: #ff477e;

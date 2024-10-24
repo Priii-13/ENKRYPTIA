@@ -1,5 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women Safety Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            display: none; /* Hidden by default */
+        }
+        #chat-header {
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        #chat-messages {
+            height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+            background: #f9f9f9;
+        }
+        #user-input {
+            display: flex;
+        }
+        #user-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #user-input button {
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="chatbot">
+    <div id="chat-header">Women Safety Chatbot</div>
+    <div id="chat-messages"></div>
+    <div id="user-input">
+        <input type="text" id="user-message" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<button onclick="toggleChat()">Chat with us</button>
+
+<script>
+    function toggleChat() {
+        const chatbot = document.getElementById("chatbot");
+        chatbot.style.display = chatbot.style.display === "none" ? "block" : "none";
+    }
+
+    function sendMessage() {
+        const input = document.getElementById("user-message");
+        const message = input.value;
+        input.value = '';
+
+        if (message) {
+            appendMessage("You: " + message);
+            generateResponse(message);
+        }
+    }
+
+    function appendMessage(message) {
+        const chatMessages = document.getElementById("chat-messages");
+        chatMessages.innerHTML += "<div>" + message + "</div>";
+        chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to the bottom
+    }
+
+    function generateResponse(message) {
+        let response = "";
+
+        // Basic responses based on user input
+        if (message.toLowerCase().includes("help")) {
+            response = "If you're in danger, please contact local authorities immediately!";
+        } else if (message.toLowerCase().includes("police")) {
+            response = "The nearest police station is at [insert location].";
+        } else if (message.toLowerCase().includes("shelters")) {
+            response = "You can find shelters at [insert shelter locations].";
+        } else if (message.toLowerCase().includes("resources")) {
+            response = "Here are some resources for women's safety: [insert links/resources].";
+        } else {
+            response = "I'm here to help! You can ask about safety tips, local police stations, or shelters.";
+        }
+
+        appendMessage("Bot: " + response);
+    }
+</script>
+
+</body>
+</html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Safety</title>
+    <link rel="stylesheet" href="styles1.css">
+</head>
 
 <head>
     <meta charset="UTF-8">
@@ -12,7 +130,7 @@
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="logo">
-            <a href="index1.html"><img src="icons/kavach.webp" alt="kavach"></a>
+            <a href="index1.html"></a>
         </div>
         <ul class="nav-links">
             <li><a href="index1.html">Home</a></li>
@@ -25,7 +143,8 @@
 
     <!-- Main Content Area -->
     <div class="main-content">
-
+       
+            
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
@@ -40,7 +159,8 @@
 
         <!-- Safety Features and Services -->
         <section class="features">
-            <h2>Our Commitment to Your Safety</h2>
+            <h2 style ="color:red ; opacity: 1;">Our Commitment to Your Safety</h2>
+
             <div class="features-grid">
                 <div class="feature-item">
                     <img src="icons/emergency_calls.jpg" alt="Emergency Contacts">
@@ -51,7 +171,91 @@
                     <img src="icons/safe-zone.jpg" alt="Safe Zones">
                     <h3>Safe Zones</h3>
                     <p>Find safe locations near you</p>
+                    <div id = "map" style ="height : 400px; width : 100%;"></div>
                     </div>
+                    <script>
+                        // Initialize and add the map
+                        function initMap() {
+                          // Default location (if geolocation fails)
+                          const defaultLocation = { lat: 28.7041, lng: 77.1025 }; // Example: New Delhi, India
+                      
+                          // Create a map centered at defaultLocation
+                          const map = new google.maps.Map(document.getElementById("map"), {
+                            zoom: 12,
+                            center: defaultLocation,
+                          });
+                      
+                          // Try HTML5 geolocation to get user's location
+                          if (navigator.geolocation) {
+                            navigator.geolocation.getCurrentPosition(
+                              (position) => {
+                                const pos = {
+                                  lat: position.coords.latitude,
+                                  lng: position.coords.longitude,
+                                };
+                      
+                                // Center the map at the user's location
+                                map.setCenter(pos);
+                      
+                                // Add a marker for the user's current location
+                                const userMarker = new google.maps.Marker({
+                                  position: pos,
+                                  map: map,
+                                  title: "You are here",
+                                });
+                      
+                                // Define predefined safe zones (you can add more)
+                                const safeZones = [
+                                  { lat: 21.161934, lng: 79.085944, title: "Safe Zone 1" },
+                                  { lat: 21.1626, lng: 79.0897, title: "Safe Zone 2" },
+                                  { lat: 21.1327, lng: 79.0824, title: "Safe Zone 3" },
+                                  { lat: 21.1499, lng: 79.0837, title: "Safe Zone 4" },
+                                  { lat: 21.1875, lng: 79.0506, title: "Safe Zone 5" },
+                                  { lat: 21.1478, lng: 79.0846, title: "Safe Zone 6" },
+                                  { lat: 21.1375, lng: 79.0820, title: "Safe Zone 7" },
+                                  { lat: 21.1275, lng: 79.0647, title: "Safe Zone 8" }
+                                ];
+                      
+                                // Add circles for each safe zone
+                                safeZones.forEach((zone) => {
+                                  new google.maps.Circle({
+                                    strokeColor: "#0000FF", // Blue border
+                                    strokeOpacity: 0.8,
+                                    strokeWeight: 2,
+                                    fillColor: "#0000FF",   // Blue fill
+                                    fillOpacity: 0.35,
+                                    map: map,
+                                    center: { lat: zone.lat, lng: zone.lng },
+                                    radius: 300, // Adjust the radius as needed (in meters)
+                                  });
+                                });
+                              },
+                              () => {
+                                handleLocationError(true, map.getCenter());
+                              }
+                            );
+                          } else {
+                            // Browser doesn't support Geolocation
+                            handleLocationError(false, map.getCenter());
+                          }
+                        }
+                      
+                        // Handle geolocation errors
+                        function handleLocationError(browserHasGeolocation, pos) {
+                          alert(
+                            browserHasGeolocation
+                              ? "Error: The Geolocation service failed."
+                              : "Error: Your browser doesn't support geolocation."
+                          );
+                        }
+                      </script>
+                      
+                    
+                    <!-- Google Maps JavaScript API script with your API key -->
+                    <script async
+                      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGkoGWavEHiT5hJ8ZgHPtz8j1Bb3xCUco&callback=initMap">
+                    </script>
+                    
                    <div class="feature-item">
                     <img src="icons/safety-tips.webp" alt="Safety Tips">
                     <h3><a href="https://paladinsecurity.com/safety-tips/for-women/">Safety Tips</a></h3>
@@ -74,7 +278,7 @@
 
         <!-- Community and Support -->
         <section class="community">
-            <h2>Join a Community of Empowerment</h2>
+            <h2 style="color: red;">join a commity of Empowerment</h2>
             <p>Connect with a network of women who are here to support and uplift each other.</p>
             <div class="community-features">
                 <div class="community-feature-item">
@@ -94,7 +298,7 @@
 
         <!-- Resources and Education -->
         <section class="resources">
-            <h2>Learn and Stay Informed</h2>
+            <h2 style="color:red">Learn and Stay Informed</h2>
             <div class="resource-categories">
                 <!-- <div class="resource-item">
                 <h3>Workshops</h3>
@@ -121,7 +325,7 @@
 
         <!-- Testimonials -->
         <section class="testimonials">
-            <h2>Voices of Empowerment</h2>
+            <h2 style="color:red;opacity: 1;">Voices of Empowerment</h2>
             <div class="testimonial-card">
                 <p>"This platform gave me the resources and community I needed to feel safe and empowered. I'm forever
                     grateful."</p>
@@ -155,8 +359,9 @@
         </div>
         <div class="social-media-icons">
             <a href="#"><img src="icons/facebook.png" alt="Facebook"></a>
+            
             <a href="#"><img src="icons/twitter.png" alt="Twitter"></a>
-            <a href="#"><img src="icons/instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="icons/images.jpeg" alt="Instagram"></a>
         </div>
         <p>&copy; 2024 Women’s Safety Platform. All rights reserved.</p>
     </footer>
